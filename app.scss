@@ -1,0 +1,18 @@
+// colors 
+$beige: #fdf4c1;
+$black: #1f1f1f;
+
+h1 {
+  color: $beige;
+}
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: $black;
+}
+svg#board {
+  width: 100%;
+  height: 500px;
+  background-color: $beige;
+}
