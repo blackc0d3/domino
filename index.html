@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Domino Game</title>
@@ -7,7 +7,307 @@
   </head>
   <body>
     <h1>Domino Game</h1>
+
     <svg id="board">
+      <!-- tiles 01 02 03 04 05 06 -->
+      <g id="tile00">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+      </g>
+      <g id="tile01">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+      </g>
+      <g id="tile02">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile03">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile04">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile05">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile06">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 11 12 13 14 15 16 -->
+      <g id="tile11">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+      </g>
+      <g id="tile12">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile13">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile14">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile15">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile16">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 22 23 24 25 26 -->
+      <g id="tile22">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile23">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile24">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile25">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile26">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 33 34 35 36 -->
+      <g id="tile33">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+      </g>
+      <g id="tile34">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile35">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile36">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 44 45 46 -->
+      <g id="tile44">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile45">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile46">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 55 56 -->
+      <g id="tile55">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="21" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+      <g id="tile66">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="21" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- tiles 66 -->
+      <g id="tile66">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <circle class="dot" cx="10" cy="13" r="3" />
+        <circle class="dot" cx="10" cy="23" r="3" />
+        <circle class="dot" cx="10" cy="34" r="3" />
+        <circle class="dot" cx="31" cy="13" r="3" />
+        <circle class="dot" cx="31" cy="23" r="3" />
+        <circle class="dot" cx="31" cy="34" r="3" />
+        <rect class="tileLine" x="2" y="42" width="37" height="2" />
+        <circle class="dot" cx="10" cy="53" r="3" />
+        <circle class="dot" cx="10" cy="63" r="3" />
+        <circle class="dot" cx="10" cy="74" r="3" />
+        <circle class="dot" cx="31" cy="53" r="3" />
+        <circle class="dot" cx="31" cy="63" r="3" />
+        <circle class="dot" cx="31" cy="74" r="3" />
+      </g>
+
+      <!-- empty tile - to hide tiles in the stack and shot how many left -->
+      <g id="tile">
+        <rect class="tile" x="0" y="0" width="41" height="84" />
+        <!-- TODO: this tile should contain number of tiles left in stack -->
+      </g>
     </svg>
 
     <script src="app.js">
