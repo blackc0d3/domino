@@ -8,6 +8,10 @@ var conf = {
                                        [5,5], [5,6],
                                               [6,6],
   ],
+  getRandomInt: function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  },
+  initialNumOfTilesForPlayer: 6
 };
 
 
@@ -18,6 +22,9 @@ var Tile = function(s1, s2) {
   this.htmlElement = (function () {
     return document.getElementById("tile" + s1 + s2);
   }());
+  this.moveTo = function(x, y) {
+    // TODO: move tile to specified position
+  };
 };
 
 
@@ -33,6 +40,18 @@ var Player = function(name) {
     }
   }());
   this.tiles = [];
+  this.takeFromBank = function() {
+    var randomTileNum = conf.getRandomInt(0, this.tiles.length - 1);
+    var randomTile = game.bank.tiles[randomTileNum];
+    this.tiles.push(randomTile);
+    // remove tile from game bank and update tilesLeft element value
+    game.bank.tiles.splice(randomTileNum, 1);
+    document.getElementById('tilesLeft').textContent = game.bank.tiles.length;
+    // TODO: calculate free space to put tile just taken from bank
+    var freeX = 0,
+        freeY = 400;
+    randomTile.moveTo(freeX, freeY);
+  };
 };
 
 
@@ -58,12 +77,22 @@ var game = {
 
   players: [],
 
+  distributeTiles: function() {
+    for (var j = 1; j <= conf.initialNumOfTilesForPlayer; j++) {
+      for (var i = 0; i <= this.players.length - 1; i++) {
+        this.players[i].takeFromBank();
+      }
+    }
+  },
+
   start: function(playerName) {
+    // update bank
+    this.bank.init();
     // create players
     this.players[0] = new Player();
     this.players[1] = new Player(playerName);
-    // update bank
-    this.bank.init();
+    // distribute initial set of tiles to each player
+    this.distributeTiles();
   }
 
 };
