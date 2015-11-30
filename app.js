@@ -10,8 +10,7 @@ var conf = {
   ],
   getRandomInt: function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  },
-  initialNumOfTilesForPlayer: 6
+  }
 };
 
 
@@ -28,7 +27,7 @@ var Tile = function(s1, s2) {
   this.transform = function() {
     this.htmlElement.setAttribute('transform',
         'translate(' + this.x + ', ' + this.y + ') ' +
-        'rotate(' + this.d + ')');
+        'rotate(' + this.d + ', ' + 21 + ', ' + 41 + ')');
   };
   this.moveTo = function(x, y) {
     this.x = x;
@@ -43,34 +42,7 @@ var Tile = function(s1, s2) {
 
 
 
-var Player = function(name) {
-  this.name = name;
-  this.type = (function () {
-    if (name === undefined) {
-      return 'computer';
-    }
-    else {
-      return 'human';
-    }
-  }());
-  this.tiles = [];
-  this.takeFromBank = function() {
-    var randomTileNum = conf.getRandomInt(0, this.tiles.length - 1);
-    var randomTile = game.bank.tiles[randomTileNum];
-    this.tiles.push(randomTile);
-    // remove tile from game bank and update tilesLeft element value
-    game.bank.tiles.splice(randomTileNum, 1);
-    document.getElementById('tilesLeft').textContent = game.bank.tiles.length;
-    // TODO: calculate free space to put tile just taken from bank
-    var freeX = 0,
-        freeY = 0;
-    randomTile.moveTo(freeX, freeY);
-  };
-};
-
-
-
-var game = {
+var app = {
   getBoardWidth: function() {
     return Math.round(
         document.getElementById('board').getBoundingClientRect().width
@@ -89,26 +61,19 @@ var game = {
     },
   },
 
-  players: [],
+  randomTile: undefined,
 
-  distributeTiles: function() {
-    for (var j = 1; j <= conf.initialNumOfTilesForPlayer; j++) {
-      for (var i = 0; i <= this.players.length - 1; i++) {
-        this.players[i].takeFromBank();
-      }
-    }
-  },
-
-  start: function(playerName) {
+  generateTile: function() {
     // update bank
     this.bank.init();
-    // create players
-    this.players[0] = new Player();
-    this.players[1] = new Player(playerName);
-    // distribute initial set of tiles to each player
-    this.distributeTiles();
-    this.bank.tiles[0].moveTo(100, 100);
-    this.bank.tiles[0].rotate(90);
+    // put previously random taken tile back to the bank, if there is one
+    if (this.randomTile !== undefined) {
+      this.randomTile.rotate(0);
+      this.randomTile.moveTo(0, 0);
+    }
+    // take random tile from bank
+    this.randomTile = this.bank.tiles[conf.getRandomInt(0, 27)];
+    this.randomTile.moveTo(100, 0);
   }
 
 };

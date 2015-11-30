@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <h1>Domino Game</h1>
+    <h1>Domino</h1>
     <p>
-      enter your name: 
-      <input id="playerName" type="text" value="Player1" />
-      <input type="button" onclick="
-        game.start(document.getElementById('playerName').value);
-      " value="start game" />
+      <input type="button" onclick="app.generateTile();"
+        value="generate tile" /><br>
+      <input type="button" onclick="app.randomTile.rotate(90);"
+        value="left" />
+      <input type="button" onclick="app.randomTile.rotate(0);"
+        value="center" />
+      <input type="button" onclick="app.randomTile.rotate(-90);"
+        value="right" />
     </p>
 
     <svg id="board" width="100%" height="500" >
