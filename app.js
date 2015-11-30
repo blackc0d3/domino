@@ -22,8 +22,22 @@ var Tile = function(s1, s2) {
   this.htmlElement = (function () {
     return document.getElementById("tile" + s1 + s2);
   }());
+  this.x = 0; // current position, coordinate x
+  this.y = 0; // current position, coordinate y
+  this.d = 0; // current degree
+  this.transform = function() {
+    this.htmlElement.setAttribute('transform',
+        'translate(' + this.x + ', ' + this.y + ') ' +
+        'rotate(' + this.d + ')');
+  };
   this.moveTo = function(x, y) {
-    // TODO: move tile to specified position
+    this.x = x;
+    this.y = y;
+    this.transform();
+  };
+  this.rotate = function(d) {
+    this.d = d;
+    this.transform();
   };
 };
 
@@ -49,7 +63,7 @@ var Player = function(name) {
     document.getElementById('tilesLeft').textContent = game.bank.tiles.length;
     // TODO: calculate free space to put tile just taken from bank
     var freeX = 0,
-        freeY = 400;
+        freeY = 0;
     randomTile.moveTo(freeX, freeY);
   };
 };
@@ -93,6 +107,8 @@ var game = {
     this.players[1] = new Player(playerName);
     // distribute initial set of tiles to each player
     this.distributeTiles();
+    this.bank.tiles[0].moveTo(100, 100);
+    this.bank.tiles[0].rotate(90);
   }
 
 };
