@@ -1,3 +1,7 @@
+"strict mode";
+
+
+
 var conf = {
   tiles: [
     [0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6],
@@ -25,20 +29,31 @@ var Tile = function(s1, s2) {
   this.x = 0; // current position, coordinate x
   this.y = 0; // current position, coordinate y
   this.d = 0; // current degree
-  this.transform = function() {
+};
+Tile.prototype = {
+  transform: function() {
     this.htmlElement.setAttribute('transform',
         'translate(' + this.x + ', ' + this.y + ') ' +
-        'rotate(' + this.d + ')');
-  };
-  this.moveTo = function(x, y) {
+        'rotate(' + this.d + ', ' + 21 + ', ' + 41 + ')');
+  },
+  moveTo: function(x, y) {
     this.x = x;
     this.y = y;
     this.transform();
-  };
-  this.rotate = function(d) {
+  },
+  rotate: function(d) {
+    this.d = this.d + d;
+    if (this.d >= 360) { this.d = this.d - 360; }
+    if (this.d <= -360) { this.d = this.d + 360; }
+    this.transform();
+  },
+  // difference: setDegree() sets specified degree of rotation
+  //             rotate()    rotates element in specified
+  //                         direction from its current state
+  setDegree: function(d) {
     this.d = d;
     this.transform();
-  };
+  }
 };
 
 
@@ -83,6 +98,7 @@ var game = {
       this.tiles = [];
       for (var i = 0; i <= conf.tiles.length - 1; i++) {
         this.tiles.push(new Tile(conf.tiles[i][0], conf.tiles[i][1]));
+        this.tiles[i].constructor = Tile;
       }
       // update tilesLeft element
       document.getElementById('tilesLeft').textContent = this.tiles.length;
@@ -100,13 +116,14 @@ var game = {
   },
 
   start: function(playerName) {
-    // update bank
+    // setup bank
     this.bank.init();
     // create players
     this.players[0] = new Player();
     this.players[1] = new Player(playerName);
     // distribute initial set of tiles to each player
     this.distributeTiles();
+    this.bank.tiles[0].setDegree(0);
     this.bank.tiles[0].moveTo(100, 100);
     this.bank.tiles[0].rotate(90);
   }
