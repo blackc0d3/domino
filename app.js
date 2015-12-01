@@ -73,8 +73,6 @@ var app = {
   randomTile: undefined,
 
   generateTile: function() {
-    // update bank
-    this.bank.init();
     // put previously random taken tile back to the bank, if there is one
     if (this.randomTile !== undefined) {
       this.randomTile.setDegree(0);
@@ -86,3 +84,5 @@ var app = {
   }
 
 };
+
+window.onload = app.bank.init();
