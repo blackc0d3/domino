@@ -1,3 +1,7 @@
+"strict mode";
+
+
+
 var conf = {
   tiles: [
     [0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6],
@@ -24,29 +28,31 @@ var Tile = function(s1, s2) {
   this.x = 0; // current position, coordinate x
   this.y = 0; // current position, coordinate y
   this.d = 0; // current degree
-  this.transform = function() {
+};
+Tile.prototype = {
+  transform: function() {
     this.htmlElement.setAttribute('transform',
         'translate(' + this.x + ', ' + this.y + ') ' +
         'rotate(' + this.d + ', ' + 21 + ', ' + 41 + ')');
-  };
-  this.moveTo = function(x, y) {
+  },
+  moveTo: function(x, y) {
     this.x = x;
     this.y = y;
     this.transform();
-  };
-  this.rotate = function(d) {
+  },
+  rotate: function(d) {
     this.d = this.d + d;
     if (this.d >= 360) { this.d = this.d - 360; }
     if (this.d <= -360) { this.d = this.d + 360; }
     this.transform();
-  };
+  },
   // difference: setDegree() sets specified degree of rotation
   //             rotate()    rotates element in specified
   //                         direction from its current state
-  this.setDegree = function(d) {
+  setDegree: function(d) {
     this.d = d;
     this.transform();
-  };
+  }
 };
 
 
@@ -64,6 +70,7 @@ var app = {
       this.tiles = [];
       for (var i = 0; i <= conf.tiles.length - 1; i++) {
         this.tiles.push(new Tile(conf.tiles[i][0], conf.tiles[i][1]));
+        this.tiles[i].constructor = Tile;
       }
       // update tilesLeft element
       document.getElementById('tilesLeft').textContent = this.tiles.length;
