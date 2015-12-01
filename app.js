@@ -35,6 +35,15 @@ var Tile = function(s1, s2) {
     this.transform();
   };
   this.rotate = function(d) {
+    this.d = this.d + d;
+    if (this.d >= 360) { this.d = this.d - 360; }
+    if (this.d <= -360) { this.d = this.d + 360; }
+    this.transform();
+  };
+  // difference: setDegree() sets specified degree of rotation
+  //             rotate()    rotates element in specified
+  //                         direction from its current state
+  this.setDegree = function(d) {
     this.d = d;
     this.transform();
   };
@@ -68,7 +77,7 @@ var app = {
     this.bank.init();
     // put previously random taken tile back to the bank, if there is one
     if (this.randomTile !== undefined) {
-      this.randomTile.rotate(0);
+      this.randomTile.setDegree(0);
       this.randomTile.moveTo(0, 0);
     }
     // take random tile from bank
