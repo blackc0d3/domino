@@ -115,17 +115,29 @@ var game = {
     }
   },
 
-  start: function(playerName) {
+  init: function() {
+    var startGameButton = document.getElementById('startGame');
+    // show startGame button
+    startGameButton.addEventListener('click', game.start);
+    startGameButton.removeAttribute('class');
+  },
+
+  start: function() {
+    var playerName = document.getElementById('playerName').value;
     // setup bank
-    this.bank.init();
+    game.bank.init();
     // create players
-    this.players[0] = new Player();
-    this.players[1] = new Player(playerName);
+    game.players[0] = new Player();
+    game.players[1] = new Player(playerName);
     // distribute initial set of tiles to each player
-    this.distributeTiles();
-    this.bank.tiles[0].setDegree(0);
-    this.bank.tiles[0].moveTo(100, 100);
-    this.bank.tiles[0].rotate(90);
+    game.distributeTiles();
+    game.bank.tiles[0].setDegree(0);
+    game.bank.tiles[0].moveTo(100, 100);
+    game.bank.tiles[0].rotate(90);
   }
 
 };
+
+
+
+window.onload = game.init();

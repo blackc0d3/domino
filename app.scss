@@ -20,6 +20,9 @@ body {
 svg#board {
   background-color: $beige;
 }
+.hidden {
+  visibility: hidden;
+}
 
 // tile
 rect.tile {
